@@ -202,12 +202,11 @@
     /* Sections */
     section{padding:50px 18px;}
     .rsvp-section{padding:60px 18px;}
-    .timeline-section .timeline-inner{padding:0 18px;}
     .countdown-section{padding:40px 18px;}
 
     /* Grids - all single column on mobile */
     .story-grid,.details-wrap,.entourage-grid,.parents-grid,
-    .attire-wrap,.sponsors-grid,.dress-cols,.family-cols,[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr;}
+    .attire-wrap,.sponsors-grid,.dress-cols,.family-cols{grid-template-columns:1fr;}
 
     /* Countdown - 2x2 */
     .countdown-grid{grid-template-columns:repeat(2,1fr);}
@@ -217,60 +216,71 @@
     .hero-names{font-size:clamp(48px,14vw,80px);}
     .sec-title{font-size:clamp(26px,6vw,38px);}
 
-    /* Timeline */
-    /* Timeline - single column centered on mobile */
-    .tl-wrap { padding: 0 8px; }
-    .tl-line { left: 20px; }
-    .tl-item { grid-template-columns: 56px 32px 1fr !important; gap: 0; }
-    .tl-item.right .tl-left { display: none; }
-    .tl-item.left .tl-right { display: none; }
-    .tl-item.right { grid-template-columns: 56px 32px 1fr !important; }
-    .tl-item.right .tl-center { grid-column: 2; }
-    .tl-item.right .tl-right { grid-column: 3; display: block !important; }
-    .tl-item.left .tl-left { grid-column: 1; display: block !important; text-align: left; padding-right: 0; padding-left: 0; }
-    .tl-item.left .tl-center { grid-column: 2; }
-    /* Make ALL items show on right side for mobile */
-    .tl-item.left .tl-left { display: none !important; }
-    .tl-item.left { grid-template-columns: 56px 32px 1fr !important; }
-    .tl-item.left .tl-center { grid-column: 2; }
-    .tl-item.left::after { display: none; }
-    .tl-left { display: none !important; }
-    .tl-right { display: block !important; text-align: left; padding-left: 12px; }
-    .tl-time { font-size: 8px; letter-spacing: 1px; }
-    .tl-event { font-size: 14px; }
-    .tl-sub { font-size: 12px; }
+    /* Bearers row */
+    .bearers-grid{grid-template-columns:1fr!important;}
 
-    /* Sponsors - single column on mobile */
+    /* Sponsors */
     .sponsors-grid{grid-template-columns:1fr!important;}
     .sponsor-pair{font-size:14px;}
 
     /* Music button */
     #music-ctrl{bottom:16px;right:16px;}
 
-    /* Attire image */
-    .attire-img-box img{max-height:400px;object-fit:cover;object-position:top;}
-
     /* RSVP */
     .rsvp-btn{padding:16px 24px;letter-spacing:3px;}
     .rsvp-verse{font-size:17px;}
 
-    /* Parents grid */
-    .parents-grid{gap:2px;}
-    .parent-name{font-size:17px;}
-
     /* Entry screen */
     #entry-screen{padding:32px 24px;}
-    /* Bearers - 3 col becomes stacked on small mobile */
-    .bearers-grid { grid-template-columns: 1fr !important; }
-    @media(min-width: 480px) {
-      .bearers-grid { grid-template-columns: 1fr 1fr 1fr !important; }
-    }
 
-    /* Entourage grid stays 2 col on mobile */
-    .entourage-grid { grid-template-columns: 1fr 1fr !important; }
-    .entourage-side { padding: 20px 16px; }
-    .ent-name { font-size: 13px; line-height: 1.6; }
-    .ent-head { font-size: 9px; letter-spacing: 3px; }
+    /* ── TIMELINE FULLY CENTERED ── */
+    .timeline-section .timeline-inner{padding:0 16px;}
+    .tl-line{display:none!important;}
+    .tl-wrap{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:4px;
+    }
+    .tl-item{
+      display:flex!important;
+      flex-direction:column!important;
+      align-items:center!important;
+      text-align:center!important;
+      width:100%!important;
+      margin-bottom:20px;
+      grid-template-columns:none!important;
+    }
+    .tl-left,.tl-right{
+      text-align:center!important;
+      padding:0!important;
+      display:block!important;
+      width:100%!important;
+    }
+    .tl-item.left .tl-right{display:none!important;}
+    .tl-item.right .tl-left{display:none!important;}
+    .tl-center{
+      margin:8px auto!important;
+      order:-1;
+    }
+    .tl-time{
+      font-size:9px;letter-spacing:2px;
+      color:var(--gold);display:block;
+      margin-bottom:4px;text-align:center!important;
+    }
+    .tl-label{font-size:16px;text-align:center!important;display:block;}
+    .tl-note{font-size:12px;text-align:center!important;display:block;}
+
+    /* Timeline fully centered mobile */
+    .tl-wrap{display:flex!important;flex-direction:column!important;align-items:center!important;}
+    .tl-line{display:none!important;}
+    .tl-item{display:flex!important;flex-direction:column!important;align-items:center!important;
+      text-align:center!important;width:100%!important;grid-template-columns:none!important;
+      margin-bottom:24px!important;}
+    .tl-left,.tl-right{display:block!important;text-align:center!important;padding:0!important;width:100%!important;}
+    .tl-center{margin:8px auto!important;}
+    .tl-dot{margin:0 auto!important;}
+    .tl-time{text-align:center!important;display:block!important;}
   }
 </style>
 </head>
@@ -281,14 +291,14 @@
   <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:rgba(245,237,224,.9);text-align:center;line-height:1.9;max-width:380px">"He has made everything beautiful<br>in its time."</div>
   <div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;color:rgba(200,160,80,.5)">Ecclesiastes 3:11</div>
   <div style="width:50px;height:0.5px;background:rgba(200,160,80,.3)"></div>
-  <div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:rgba(245,237,224,.35);text-align:center">♪ Dearest &nbsp;·&nbsp; The Paper Kites</div>
+  <div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:rgba(245,237,224,.35);text-align:center"> Dearest &nbsp;·&nbsp; The Paper Kites</div>
   <button id="enter-btn" onclick="enterSite()" style="margin-top:8px;background:transparent;border:1px solid rgba(200,160,80,.45);color:rgba(245,237,224,.9);font-family:'Cinzel',serif;font-size:9px;letter-spacing:5px;padding:16px 44px;cursor:pointer;text-transform:uppercase;transition:all .4s">
     Enter
   </button>
 </div>
 
 <div style="position:fixed;bottom:20px;right:20px;z-index:9998;display:none" id="music-ctrl">
-  <button onclick="toggleMusic()" id="music-btn" style="background:rgba(20,12,4,.88);border:1px solid rgba(200,160,80,.3);color:rgba(245,237,224,.65);font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;padding:9px 15px;cursor:pointer;text-transform:uppercase">♪ On</button>
+  <button onclick="toggleMusic()" id="music-btn" style="background:rgba(20,12,4,.88);border:1px solid rgba(200,160,80,.3);color:rgba(245,237,224,.65);font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;padding:9px 15px;cursor:pointer;text-transform:uppercase"> On</button>
 </div>
 
 <div id="player-wrap" style="position:fixed;left:-9999px;width:1px;height:1px;overflow:hidden">
@@ -331,8 +341,8 @@ function enterSite(){
 function toggleMusic(){
   var btn=document.getElementById('music-btn');
   if(!ready)return;
-  if(playing){player.pauseVideo();btn.textContent='♪ Off';playing=false;}
-  else{player.playVideo();btn.textContent='♪ On';playing=true;}
+  if(playing){player.pauseVideo();btn.textContent=' Off';playing=false;}
+  else{player.playVideo();btn.textContent=' On';playing=true;}
 }
 </script>
 
@@ -447,14 +457,14 @@ function toggleMusic(){
           <div class="tl-label">Guests Arrive</div>
           <div class="tl-note">Doors open · Welcome drinks<br>Please be seated by 2:45</div>
         </div>
-        <div class="tl-center"><div class="tl-dot">🚪</div></div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
         <div class="tl-right"></div>
       </div>
 
       <!-- 3:00 PM -->
       <div class="tl-item right tl-highlight">
         <div class="tl-left"></div>
-        <div class="tl-center"><div class="tl-dot">✝</div></div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
         <div class="tl-right">
           <div class="tl-time">3:00 PM</div>
           <div class="tl-label">Wedding Ceremony</div>
@@ -469,14 +479,14 @@ function toggleMusic(){
           <div class="tl-label">Recessional</div>
           <div class="tl-note">Newlyweds exit · Guests congratulate</div>
         </div>
-        <div class="tl-center"><div class="tl-dot">💍</div></div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
         <div class="tl-right"></div>
       </div>
 
       <!-- 4:00 PM -->
       <div class="tl-item right">
         <div class="tl-left"></div>
-        <div class="tl-center"><div class="tl-dot">📷</div></div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
         <div class="tl-right">
           <div class="tl-time">4:00 PM</div>
           <div class="tl-label">Photo Session</div>
@@ -491,14 +501,14 @@ function toggleMusic(){
           <div class="tl-label">Fellowship &amp; Light Refreshments</div>
           <div class="tl-note">Drinks &amp; light refreshments</div>
         </div>
-        <div class="tl-center"><div class="tl-dot">🥂</div></div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
         <div class="tl-right"></div>
       </div>
 
       <!-- 5:30 PM -->
       <div class="tl-item right tl-highlight">
         <div class="tl-left"></div>
-        <div class="tl-center"><div class="tl-dot">🕯</div></div>
+        <div class="tl-center"><div class="tl-dot"></div></div>
         <div class="tl-right">
           <div class="tl-time">5:30 PM</div>
           <div class="tl-label">Reception Opens</div>
@@ -518,23 +528,23 @@ function toggleMusic(){
   <div class="sec-bar"></div>
   <div class="details-wrap">
     <div class="detail-block">
-      <span class="detail-icon">✝</span>
+      <span class="detail-icon" style="font-size:20px;color:var(--gold);opacity:.6">+</span>
       <div class="detail-head">Ceremony</div>
       <div class="detail-item"><h4>Date</h4><p>Friday, August 14, 2026</p></div>
       <div class="detail-item"><h4>Time</h4><p>3:00 PM sharp<br><span style="font-size:13px;color:var(--stone)">Doors open at 2:00 PM · Please be seated by 2:45 PM</span></p></div>
       <div class="detail-item"><h4>Venue</h4><p>Elorah's Guesthouse</p></div>
       <div class="detail-item"><h4>Note</h4><p>Ceremony and reception are in the same beautiful hall. No transfers needed — stay, celebrate, be present with us.</p></div>
-      <a class="map-btn" href="https://maps.app.goo.gl/NDZttJRJziHR2HxY9" target="_blank">📍 &nbsp; Get Directions</a>
+      <a class="map-btn" href="https://maps.app.goo.gl/NDZttJRJziHR2HxY9" target="_blank"> &nbsp; Get Directions</a>
       <div class="detail-verse">
         "He has made everything beautiful in its time."
         <span style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:var(--gold);display:block;margin-top:6px;font-style:normal">Ecclesiastes 3:11</span>
       </div>
     </div>
     <div class="detail-block">
-      <span class="detail-icon">🥂</span>
+      <span class="detail-icon" style="font-size:20px;color:var(--gold);opacity:.6">+</span>
       <div class="detail-head">Reception</div>
       <div class="detail-item"><h4>Immediately Following</h4><p>Reception begins right after the ceremony — same hall, same beautiful space. Stay where you are and let the celebration begin.</p></div>
-      <div class="detail-item"><h4>Programme</h4><p>Cocktail hour at 4:30 PM<br>Dancing, toasts &amp; dinner from 5:30 PM<br>Sparkler send-off at 9:00 PM</p></div>
+      <div class="detail-item"><h4>Programme</h4><p>Cocktail hour at 4:30 PM<br>Dancing, toasts &amp; dinner from 5:30 PM</p></div>
 <div class="adult-banner">
         <p>This is an adults-only evening — we want everyone to be fully present, relaxed, and able to enjoy every moment of the celebration with us. Thank you for understanding. </p>
       </div>
@@ -725,15 +735,15 @@ function toggleMusic(){
     <div class="entourage-side">
       <div class="ent-head">Groomsmen</div>
       <div class="ent-name">
-        Simon De Guzman<br>
-        Sam De Guzman<br>
+        Simon Christian De Guzman<br>
+        Sam Cedric De Guzman<br>
         Dr. Eduardo Dizon<br>
-        Mark Puno<br>
-        Denver Gonzales<br>
+        Adriel Mark Puno<br>
+        Charles Denver Gonzales<br>
         Marvin Sumangid<br>
         Aldric Del Fonzo<br>
         Roberto De Joya<br>
-        Lyon Rafanan<br>
+        Lyon Immanuel Rafanan<br>
         Samuel Rosendo
       </div>
     </div>
@@ -756,7 +766,7 @@ function toggleMusic(){
       <div class="sponsor-pair">Arthur De Guzman &amp; Rowena Ramos</div>
       <div class="sponsor-pair">Fortunato Roxas Jr &amp; Dr. Rhodora Jugo</div>
       <div class="sponsor-pair">Elvin Haze Santos &amp; Catherine Pereyras</div>
-      <div class="sponsor-pair">Jake Linga &amp; Victoria De Leon</div>
+      <div class="sponsor-pair">Jhake Lee &amp; Victoria De Leon</div>
       <div class="sponsor-pair">Joel De Mesa &amp; Leila De Mesa</div>
       <div class="sponsor-pair">Frederick Garcia &amp; Cristina Kanemaru</div>
     </div>
@@ -847,7 +857,7 @@ function toggleMusic(){
   <div class="footer-note">Made with love · Keith &amp; Raech · 2026</div>
 </footer>
 
-<div class="toast" id="toast">✓ &nbsp; RSVP Received — See you on August 14!</div>
+<div class="toast" id="toast"> &nbsp; RSVP Received — See you on August 14!</div>
 
 <script>
 function updateCountdown(){
@@ -873,7 +883,7 @@ function submitRSVP(){
   const attending=document.getElementById('rsvp-attending').value;
   if(!name||!attending){alert('Please fill in your name and attendance.');return;}
   const toast=document.getElementById('toast');
-  toast.textContent=attending==='no'?'♥  We will miss you — thank you for letting us know.':'✓  RSVP Received — See you on August 14!';
+  toast.textContent=attending==='no'?'  We will miss you — thank you for letting us know.':'  RSVP Received — See you on August 14!';
   toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),4000);
   ['rsvp-name','rsvp-dietary','rsvp-message'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('rsvp-attending').value='';
@@ -904,8 +914,8 @@ function enterSite(){
 function toggleMusic(){
   var btn=document.getElementById('music-btn');
   if(!ready)return;
-  if(playing){player.pauseVideo();btn.textContent='♪ Off';playing=false;}
-  else{player.playVideo();btn.textContent='♪ On';playing=true;}
+  if(playing){player.pauseVideo();btn.textContent=' Off';playing=false;}
+  else{player.playVideo();btn.textContent=' On';playing=true;}
 }
 </script>
 </body>
