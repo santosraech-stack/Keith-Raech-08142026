@@ -218,11 +218,27 @@
     .sec-title{font-size:clamp(26px,6vw,38px);}
 
     /* Timeline */
-    .tl-item{grid-template-columns:60px 32px 1fr;gap:0;}
-    .tl-item.right .tl-left,.tl-item.left .tl-right{display:none;}
-    .tl-item.left .tl-left,.tl-item.right .tl-right{display:block;}
-    .tl-time{font-size:8px;letter-spacing:1px;}
-    .tl-event{font-size:14px;}
+    /* Timeline - single column centered on mobile */
+    .tl-wrap { padding: 0 8px; }
+    .tl-line { left: 20px; }
+    .tl-item { grid-template-columns: 56px 32px 1fr !important; gap: 0; }
+    .tl-item.right .tl-left { display: none; }
+    .tl-item.left .tl-right { display: none; }
+    .tl-item.right { grid-template-columns: 56px 32px 1fr !important; }
+    .tl-item.right .tl-center { grid-column: 2; }
+    .tl-item.right .tl-right { grid-column: 3; display: block !important; }
+    .tl-item.left .tl-left { grid-column: 1; display: block !important; text-align: left; padding-right: 0; padding-left: 0; }
+    .tl-item.left .tl-center { grid-column: 2; }
+    /* Make ALL items show on right side for mobile */
+    .tl-item.left .tl-left { display: none !important; }
+    .tl-item.left { grid-template-columns: 56px 32px 1fr !important; }
+    .tl-item.left .tl-center { grid-column: 2; }
+    .tl-item.left::after { display: none; }
+    .tl-left { display: none !important; }
+    .tl-right { display: block !important; text-align: left; padding-left: 12px; }
+    .tl-time { font-size: 8px; letter-spacing: 1px; }
+    .tl-event { font-size: 14px; }
+    .tl-sub { font-size: 12px; }
 
     /* Sponsors - single column on mobile */
     .sponsors-grid{grid-template-columns:1fr!important;}
@@ -244,6 +260,17 @@
 
     /* Entry screen */
     #entry-screen{padding:32px 24px;}
+    /* Bearers - 3 col becomes stacked on small mobile */
+    .bearers-grid { grid-template-columns: 1fr !important; }
+    @media(min-width: 480px) {
+      .bearers-grid { grid-template-columns: 1fr 1fr 1fr !important; }
+    }
+
+    /* Entourage grid stays 2 col on mobile */
+    .entourage-grid { grid-template-columns: 1fr 1fr !important; }
+    .entourage-side { padding: 20px 16px; }
+    .ent-name { font-size: 13px; line-height: 1.6; }
+    .ent-head { font-size: 9px; letter-spacing: 3px; }
   }
 </style>
 </head>
@@ -408,7 +435,7 @@ function toggleMusic(){
       <p class="sec-label" style="text-align:center">Programme</p>
       <h2 class="sec-title" style="text-align:center">The day's timeline</h2>
       <div style="width:48px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 8px"></div>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:rgba(245,240,232,.45);text-align:center">August 14, 2026 · Elora's Guesthouse</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:rgba(245,240,232,.45);text-align:center">August 14, 2026 · Elorah's Guesthouse</p>
     </div>
     <div class="tl-wrap">
       <div class="tl-line"></div>
@@ -495,7 +522,7 @@ function toggleMusic(){
       <div class="detail-head">Ceremony</div>
       <div class="detail-item"><h4>Date</h4><p>Friday, August 14, 2026</p></div>
       <div class="detail-item"><h4>Time</h4><p>3:00 PM sharp<br><span style="font-size:13px;color:var(--stone)">Doors open at 2:00 PM · Please be seated by 2:45 PM</span></p></div>
-      <div class="detail-item"><h4>Venue</h4><p>Elora's Guesthouse</p></div>
+      <div class="detail-item"><h4>Venue</h4><p>Elorah's Guesthouse</p></div>
       <div class="detail-item"><h4>Note</h4><p>Ceremony and reception are in the same beautiful hall. No transfers needed — stay, celebrate, be present with us.</p></div>
       <a class="map-btn" href="https://maps.app.goo.gl/NDZttJRJziHR2HxY9" target="_blank">📍 &nbsp; Get Directions</a>
       <div class="detail-verse">
@@ -651,7 +678,7 @@ function toggleMusic(){
   </div>
 
   <!-- Row 2: Bible Bearer, Coin Bearer, Ring Bearer in 3 columns -->
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-bottom:3px">
+  <div class="bearers-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-bottom:3px">
     <div class="entourage-side">
       <div class="ent-head">Bible Bearer</div>
       <div class="ent-name">Hannah Elizabeth Pascual</div>
@@ -667,7 +694,7 @@ function toggleMusic(){
   </div>
 
   <!-- Row 3: Maid of Honor + Best Man in single row -->
-  <div class="entourage-grid" style="margin-bottom:3px">
+  <div class="entourage-grid" style="margin-bottom:3px;display:grid!important;grid-template-columns:1fr 1fr!important">
     <div class="entourage-side">
       <div class="ent-head">Maid of Honor</div>
       <div class="ent-name">Elyzah Manlapat</div>
@@ -727,7 +754,7 @@ function toggleMusic(){
       <div class="sponsor-pair">Frederick Catahan &amp; Maricris Aguilar</div>
       <div class="sponsor-pair">Edsel Dominado &amp; Joy Dominado</div>
       <div class="sponsor-pair">Arthur De Guzman &amp; Rowena Ramos</div>
-      <div class="sponsor-pair">Fortunato Roxas Jr &amp; Rhodora Jugo</div>
+      <div class="sponsor-pair">Fortunato Roxas Jr &amp; Dr. Rhodora Jugo</div>
       <div class="sponsor-pair">Elvin Haze Santos &amp; Catherine Pereyras</div>
       <div class="sponsor-pair">Jake Linga &amp; Victoria De Leon</div>
       <div class="sponsor-pair">Joel De Mesa &amp; Leila De Mesa</div>
@@ -778,7 +805,7 @@ function toggleMusic(){
     </div>
     <div class="faq-item">
       <div class="faq-q">Where is the venue? <span class="faq-icon">+</span></div>
-      <div class="faq-a">We are celebrating at Elora's Guesthouse in Bongabon, Nueva Ecija. The ceremony and reception are held in the same beautiful venue — no transfers needed. Please refer to the Get Directions button in the Details section above for the exact location via Google Maps.</div>
+      <div class="faq-a">We are celebrating at Elorah's Guesthouse in Bongabon, Nueva Ecija. The ceremony and reception are held in the same beautiful venue — no transfers needed. Please refer to the Get Directions button in the Details section above for the exact location via Google Maps.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">What is the RSVP deadline? <span class="faq-icon">+</span></div>
@@ -815,7 +842,7 @@ function toggleMusic(){
 <footer>
   <div style="width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 36px"></div>
   <div class="footer-names">Keith &amp; Raech</div>
-  <div class="footer-date">August 14, 2026 · Elora's Guesthouse · 3:00 PM</div>
+  <div class="footer-date">August 14, 2026 · Elorah's Guesthouse · 3:00 PM</div>
   <div class="footer-verse-final">"He has made everything beautiful in its time." — Ecclesiastes 3:11</div>
   <div class="footer-note">Made with love · Keith &amp; Raech · 2026</div>
 </footer>
